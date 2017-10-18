@@ -25,6 +25,8 @@ def last_word(sentence):  # obtains last word of sentence
     return (lw)
 
 
+
+
 def last_word_pos(last_word):  # obtains the pos of a word
     last_wordpos = (pos_tag([last_word]))
     last_wordpos = last_wordpos[0][1]
@@ -45,7 +47,7 @@ def matchrhymes(syllables):  # function that returns a list of words (from cmudi
 def comparewords(word1, word2):  # function that checks if two words are rhymes, added no 'ing' option
     pron1 = syllables(word1)
     pron2 = syllables(word2)
-    if re.search('ing', word1 + word2) == None:
+    if re.search('ing', word1 + word2) == None and re.search('ly', word1 + word2) == None :  # get rid of unwanted words with suffixes ing, ed, ly
         if pron1[-1][-2:] == pron2[-1][-2:]: # note: syllables from cmudict.dict() are returned as a list within a list
             return (True)
 

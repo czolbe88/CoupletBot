@@ -4,6 +4,7 @@ import couplet2
 import rhyme
 import os
 from datetime import datetime
+import re
 
 
 
@@ -25,33 +26,43 @@ successful_couplets = []
 
 
 
-for submission in all.new(
+for submission in all.hot(
         limit=20):  # subreddit.new or any of the following: controversial, gilded, hot, rising, top,
-    print("Title: ", submission.title)
+    '''print("Title: ", submission.title)
     print("Text: ", submission.selftext)
-    print("Score: ", submission.score)
+    print("Score: ", submission.score)'''
 
     submission.comment_sort = 'new'
     submission.comments.replace_more(limit=0)  # top level comment forests. iterable object
+
+    with open("coupletserial.txt", "r") as coupletserial: # open verse serial file
+        serials = coupletserial.read()
+
     for comment in submission.comments.list():
-        print("comment: " + comment.body)
-        print("author: " + str(comment.author))
+        '''print("comment: " + comment.body)
+        print("author: " + str(comment.author))'''
 
         if str(comment.author) != "peacefulOcean":  # add condition, author is not peacefulocean
             strcomment = str(comment.body)
-            testcouplet = couplet.coupletize(strcomment)
+            testcouplet = couplet2.couplet(strcomment) #this is a list
 
-            if testcouplet != None:
-                successful_couplets.append(testcouplet)  # append the output to successful_couplets
-                author = str(comment.author)
-                with open("couplets_found2.txt", "a") as f:
+            if testcouplet is not None:
 
-                    f.write(  str(datetime.fromtimestamp(comment.created))  + "\n" + author + "\n\n" +
-                             testcouplet + "\n\n" + "-----" +"\n\n" )
+                for verse in testcouplet:
+                    author = str(comment.author)
+                    with open("couplets_found2.txt", "a") as f:
+
+                        if re.search( (str(datetime.fromtimestamp(comment.created)) + author), serials) is None: # ensure that this verse has not been recorded
+
+                            f.write(  str(datetime.fromtimestamp(comment.created))  + "\n" + author + "\n\n" +
+                                     verse + "\n\n" + "-----" +"\n\n" )
+
+                            with open("coupletserial.txt", "a") as g:
+                                g.write(str(datetime.fromtimestamp(comment.created)) + author ) #give the verse a serial number
 
 
 
-        print("--- End of Comment ---")
+        #print("--- End of Comment ---")
 
     '''for top_level_comment in submission.comments :
         nombor =1
@@ -59,7 +70,7 @@ for submission in all.new(
         nombor+=1
         top_level_comment.reply("testing")'''
 
-    print(" --------- End of Submission ---------\n")
+    #print(" --------- End of Submission ---------\n")
 
 '''
  dir(submission)
