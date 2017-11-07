@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import praw
 import couplet
 import couplet2
