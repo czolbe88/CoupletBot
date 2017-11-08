@@ -1,6 +1,7 @@
 #!/usr/bin/python3.5
 import sys
 sys.path.append('/home/ubuntu/.local/lib/python3.5/site-packages')
+sys.path.append('/usr/local/lib/python3.5/dist-packages/nltk/__init__.py')
 
 import praw
 import couplet
