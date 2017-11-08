@@ -1,5 +1,8 @@
+import nltk
 from nltk.corpus import wordnet as wn
 from nltk import *
+nltk.data.path.append('/usr/lib/python3/dist-packages')
+nltk.data.path.append('/usr/local/lib/python3.5/dist-packages/nltk/__init__.py')
 from nltk.corpus import cmudict
 from nltk.tokenize import RegexpTokenizer
 from random import randint
