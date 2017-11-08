@@ -1,4 +1,5 @@
 #!/usr/bin/python3.5
+import sys
 
 import praw
 import couplet
@@ -8,7 +9,7 @@ import os
 from datetime import datetime
 import re
 
-
+sys.path.append('/home/ubuntu/.local/lib/python3.5/site-packages')
 
 
 reddit = praw.Reddit('koopacopabot')
