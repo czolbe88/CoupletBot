@@ -1,7 +1,7 @@
 #!/usr/bin/python3.5
 import sys
-sys.path.append('/home/ubuntu/.local/lib/python3.5/site-packages')
-sys.path.append('/home/ubuntu/nltk_data/corpora')
+sys.path.append('\\home\\ubuntu\\.local\\lib\\python3.5\\site-packages')
+sys.path.append('\\home\\ubuntu\\nltk_data\\corpora')
 import praw
 import couplet
 import couplet2
