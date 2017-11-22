@@ -1,7 +1,7 @@
 #!/usr/bin/python3.5
 import sys
 sys.path.append('/home/ubuntu/.local/lib/python3.5/site-packages')
-
+sys.path.append('/home/ubuntu/nltk_data/corpora')
 import praw
 import couplet
 import couplet2
@@ -54,15 +54,18 @@ for submission in all.hot(
 
                 for verse in testcouplet:
                     author = str(comment.author)
-                    with open("couplets_found2.txt", "a") as f:
+                    with open(".\\couplets_found2.txt", "a") as f:
 
                         if re.search( (str(datetime.fromtimestamp(comment.created)) + author), serials) is None: # ensure that this verse has not been recorded
 
                             f.write(  str(datetime.fromtimestamp(comment.created))  + "\n" + author + "\n\n" +
                                      verse + "\n\n" + "-----" +"\n\n" )
 
-                            with open("coupletserial.txt", "a") as g:
+                            with open(".\\coupletserial.txt", "a") as g:
                                 g.write(str(datetime.fromtimestamp(comment.created)) + author ) #give the verse a serial number
+
+                            with open(".\\verify.txt", "a") as h:
+                                h.write("hello there")
 
 
 
