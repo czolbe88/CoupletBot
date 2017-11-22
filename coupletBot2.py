@@ -64,8 +64,7 @@ for submission in all.hot(
                             with open(".\\coupletserial.txt", "a") as g:
                                 g.write(str(datetime.fromtimestamp(comment.created)) + author ) #give the verse a serial number
 
-                            with open(".\\verify.txt", "a") as h:
-                                h.write("hello there")
+
 
 
 
