@@ -60,6 +60,10 @@ for submission in all.hot(
 
                             f.write(  str(datetime.fromtimestamp(comment.created))  + "\n" + author + "\n\n" +
                                      verse + "\n\n" + "-----" +"\n\n" )
+                            print( str(datetime.fromtimestamp(comment.created))  + "\n" + author + "\n\n" +
+                                     verse + "\n\n" + "-----" +"\n\n")
+
+
 
                             with open(".\\coupletserial.txt", "a") as g:
                                 g.write(str(datetime.fromtimestamp(comment.created)) + author ) #give the verse a serial number
